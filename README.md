@@ -111,13 +111,13 @@ And continues processing the rest of the order without failing.
 
 ### 3. Database Modeling
 
-*Shop Model:
+**Shop Model**:
 
 A Shop model must be created to support multi-tenancy.
 It must store essential information for connecting to a Shopify store
 All product synchronizations and order processing should be scoped to a specific Shop instance.
 
-*Product Model:
+**Product Model**:
 
 A local Product model must be created to track and manage the state of products synchronized to Shopify.
 It must belong to a Shop instance.
