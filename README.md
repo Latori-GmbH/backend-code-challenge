@@ -109,6 +109,20 @@ When a product in the order does not have the `max_mustermann.estimated_delivery
 Then the application logs this event,
 And continues processing the rest of the order without failing.
 
+### 3. Database Modeling
+
+*Shop Model:
+
+A Shop model must be created to support multi-tenancy.
+It must store essential information for connecting to a Shopify store
+All product synchronizations and order processing should be scoped to a specific Shop instance.
+
+*Product Model:
+
+A local Product model must be created to track and manage the state of products synchronized to Shopify.
+It must belong to a Shop instance.
+It should store the product's Shopify ID (shopify_id, unique within the shop scope) for easy lookups.
+
 ## Submission Guidelines
 
 * Please submit your code as a GitHub repository (private, inviting us as a collaborator) or a ZIP file.
