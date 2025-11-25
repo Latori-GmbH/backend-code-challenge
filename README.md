@@ -109,19 +109,25 @@ When a product in the order does not have the `max_mustermann.estimated_delivery
 Then the application logs this event,
 And continues processing the rest of the order without failing.
 
-### 3. Database Modeling
+### 3. Database Schema
 
-**Shop Model**:
+**Note**: The entities defined below represent the minimum requirements for this challenge. You are encouraged to extend the database schema or introduce additional entities as necessary to support your specific architectural design.
 
-A Shop model must be created to support multi-tenancy.
-It must store essential information for connecting to a Shopify store
-All product synchronizations and order processing should be scoped to a specific Shop instance.
+**Shop (Multi-Tenancy)**:
 
-**Product Model**:
+A Shop entity is required to support the application's multi-tenant architecture.
 
-A local Product model must be created to track and manage the state of products synchronized to Shopify.
-It must belong to a Shop instance.
-It should store the product's Shopify ID (shopify_id, unique within the shop scope) for easy lookups.
+*Storage*: It must persist the credentials and configuration details needed to connect to a specific Shopify store.
+
+*Scoping*: All operations, including product synchronization and order processing, must be scoped to a specific Shop instance.
+
+**Product**:
+
+A Product entity must be implemented to track the state of items synchronized to Shopify.
+
+*Relationship*: It must belong to a Shop instance.
+
+*Reference*: It should store the `shopify_id` to facilitate efficient lookups.
 
 ## Submission Guidelines
 
